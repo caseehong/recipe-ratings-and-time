@@ -31,7 +31,7 @@ I decided to add two new columns that I felt were important to my question: 'avg
 
 Another thing I did was drop duplicates of the id column. The merged DataFrame had duplicate recipes because of the different user interactions for each recipe. This resulted in repeated unchanging values and statistics that could skew the data.
 
-I also made sure to handle extreme values. Some recipes had unrealistic preparation time. I removed these outliers in order to ensure that my data would not be abnormally skewed.
+I also made sure to handle extreme values. Some recipes had unrealistic preparation time. I removed these outliers by dropping the rows containing them in order to ensure that my data would not be abnormally skewed.
 
 Below is the head of my cleaned DataFrame with key features shown:
 
@@ -122,5 +122,17 @@ I engineered two new features:
 I believe these new features improve my model's performance because they measure nuances that cannot be gathered through the non-engineered data. These two features help us make more accurate assumptions about a recipe's complexity which is likely to impact its ratings.
 #### **Switching Models**
 I decided to switch my model to RandomForestRegressor due to its ability to capture nonlinear relationships. This better fits my data and improves my model's accuracy.
+#### **Hyperparamaters**
+I tuned the maximum depth of the trees (max_depth) because deeper trees can capture more complex relationships but may also overfit the training data. I also tuned the number of trees in the forest (n_estimators) because larger forests generally result in more stable predictions, though they also have increased computation. Hyperparameters were selected using GridSearchCV to minimize mean squared error.
+#### **Final Results**
+My final model resulted in an MSE of about 0.5643 which is a slight improvement from my baseline model. Upon selecting hyperparameters for this model, I noticed that the best max_depth was only 5; this suggests that a relatively simple model generalized best and concludes that recipe ratings may not be strongly determined by cooking time, number of steps, number of tags, or calories alone.
 
 ### **Fairness Analysis**
+In order to see if my model is fair, I chose to group my data based on recipe cooking times that are under 40 minutes vs cooking that are greater than or equal to 40 minutes. I chose this grouping because it seemed that most recipes tended to fall under 40 minutes. For my permutation test I used:
+- **Null hypothesis**: This model does not performs equally well for recipes with cooking times under 40 minutes and recipes with cooking times equal to or over 40 minutes.
+- **Alternative hypothesis**: This model performs differently for recipes with cooking times under 40 minutes and recipes with cooking times equal to or over 40 minutes.
+- **Test statistic**: RMSE (Root Mean Squared Error)
+- **Significance level**: 0.05
+- **Resulting p-value**: 0.0009
+
+With the resulting p-value of 0.0009 being less than the significance level of 0.05, we can reject the null hypothesis and assume that this model performs differently based on long vs. shorter cooking times. This indicated that the model may potentially have some bias or uneven prediction performance.
