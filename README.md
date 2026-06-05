@@ -43,7 +43,7 @@ Below is the head of my cleaned DataFrame with key features shown:
 |	475785 |	90	|	17	|	5.0	| 267.0	| 150 |
 
 #### **Univariate Analysis**
-
+This histogram displays the distribution of average ratings. The data is left-skewed with most recipes having average ratings that fall in between 4.75 and 5 stars. Low and moderate ratings are relatively uncommon.
 <iframe
   src="assets/rating_fig.html"
   width="800"
@@ -51,18 +51,14 @@ Below is the head of my cleaned DataFrame with key features shown:
   frameborder="0"
 ></iframe>
 
-This histogram displays the distribution of average ratings. The data is left-skewed with most recipes having average ratings that fall in between 4.75 and 5 stars. Low and moderate ratings are relatively uncommon.
-
 #### **Bivariate Analysis**
-
+This scatter plot shows the relationship between average ratings and cooking time in minutes. The results show that recipes under 50 minutes vary greatly between moderate and high ratings with many recipes falling in that cooking time range. Around the range of 50-100 minutes is when recipes seem to have ratings that are more consistently high.
 <iframe
   src="assets/avg_vs_mins.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
-
-This scatter plot shows the relationship between average ratings and cooking time in minutes. The results show that recipes under 50 minutes vary greatly between moderate and high ratings with many recipes falling in that cooking time range. Around the range of 50-100 minutes is when recipes seem to have ratings that are more consistently high.
 
 #### **Interesting Aggregates**
 
