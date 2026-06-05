@@ -77,6 +77,15 @@ Cooking time was grouped into intervals in order to examine more closely which t
 The rating, and in turn, avg_rating columns of my DataFrame have missing data in the form of 0s. This was discovered by seeing inconsistencies in written reviews that complimented the recipe and an attached 0 star rating. Upon further inspection, it was also discovered that food.com, the website in which the data comes from, does not allow 0 star ratings and that 1 star was the lowest rating possible. I thought it could be possible that those missing ratings were a result of the recipes being newer and thus having insufficient data which is why I think the avg_rating column is NMAR.
 #### **Missingness Dependency**
 A permutation test was ran where the null hypothesis is that there is no relationship between the missingness of avg_rating and submission date (date_num column created) and the alternative hypothesis is that there is a relationship between avg_rating and submission date. This resulted in a p-value of about 0.0009 which is less than 0.05, allowing us to reject the null and assume the missingness of avg_rating has to do with the recipe's submission date.
+
+This plot shows that the distribution of dates features a large chunk of later, or more recent, dates that do not appear when there are no missing ratings.
+<iframe
+  src="assets/date_missingness.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
 ### **Hypothesis Testing**
 
 ### **Framing a Prediction Problem**
