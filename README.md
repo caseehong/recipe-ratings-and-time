@@ -51,6 +51,31 @@ Below is the head of my cleaned DataFrame with key features shown:
   frameborder="0"
 ></iframe>
 
+This histogram displays the distribution of average ratings. The data is left-skewed with most recipes having average ratings that fall in between 4.75 and 5 stars. Low and moderate ratings are relatively uncommon.
+
+#### **Bivariate Analysis**
+
+<iframe
+  src="assets/avg_vs_mins.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+This scatter plot shows the relationship between average ratings and cooking time in minutes. The results show that recipes under 50 minutes vary greatly between moderate and high ratings with many recipes falling in that cooking time range. Around the range of 50-100 minutes is when recipes seem to have ratings that are more consistently high.
+
+#### **Interesting Aggregates**
+
+| Cooking Time Bin | Average Rating |
+| ----------- | -------------- |
+| 0-15 minutes | 4.55 |
+| 15-30 minutes | 4.51 |
+| 30-60 minutes | 4.47 |
+| 1-2 hours | 4.47 |
+| over 2 hours | 4.45 |
+
+Cooking time was grouped into intervals in order to examine more closely which time range tends to be the most popular. Recipes under 15 minutes performed the best with recipes in the other ranges doing slighly worse. Recipes over 2 hours performed the worst with an average rating of about 0.10 less. This tells us that users prefer quicker recipes.
+
 ### **Assessment of Missingness**
 
 ### **Hypothesis Testing**
