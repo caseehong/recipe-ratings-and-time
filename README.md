@@ -15,7 +15,7 @@ This dataset contains CSV files RAW_recipes.csv and interactions.csv -- these fi
 - **n_steps**: Number of steps in the recipe
 - **rating**: Rating given by an individual user
 ### **Data Cleaning and Exploratory Data Analysis**
-####**Data Cleaning**
+#### **Data Cleaning**
 The two given CSV files were merged on the 'recipe_id' column in order to create one recipes dataframe. With that, there were a large number of columns and cleaning that had to be done within some of those columns. 
 
 The first column I tackled was the 'nutrition' column. In order to get the numerical values and separate them into separate categories for each given nutritional value, I first stripped the column values of their brackets and split the numerical values by ', ' in order to create a list of strings of numbers rather than one long string. I then used this list and the .apply function to convert these values into floats and gave each nutritional category their own column -- 'calories', 'total_fat', 'sugar', 'sodium', 'protein', 'saturated_fat', and 'carbohydrates'.
