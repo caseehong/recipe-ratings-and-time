@@ -15,7 +15,19 @@ This dataset contains CSV files RAW_recipes.csv and interactions.csv -- these fi
 - **n_steps**: Number of steps in the recipe
 - **rating**: Rating given by an individual user
 ### **Data Cleaning and Exploratory Data Analysis**
+####**Data Cleaning**
+The two given CSV files were merged on the 'recipe_id' column in order to create one recipes dataframe. With that, there were a large number of columns and cleaning that had to be done within some of those columns. 
 
+The first column I tackled was the 'nutrition' column. In order to get the numerical values and separate them into separate categories for each given nutritional value, I first stripped the column values of their brackets and split the numerical values by ', ' in order to create a list of strings of numbers rather than one long string. I then used this list and the .apply function to convert these values into floats and gave each nutritional category their own column -- 'calories', 'total_fat', 'sugar', 'sodium', 'protein', 'saturated_fat', and 'carbohydrates'.
+
+
+I decided to add two new columns that I felt were important to my question: 'avg_rating' and 'n_tags':
+
+- 'avg_rating' features each recipe's average rating. This column was created by grouping the merged recipes dataframe by 'id' and finding the mean of the grouped ratings before mapping the results onto the recipes dataframe 'id' column. This additional column is important in discovering general user consensus about each recipe.
+- 'n_tags' displays the number of tags each recipe has. This was created using the .apply function and finding the length of the list of tags in the 'tags' column. This additional column lets us examine whether or not the number of tags on a recipe play a role in user ratings.
+
+
+I also made sure to handle extreme values. Some recipes had unrealistic preparation time. I removed these outliers in order to ensure that my data would not be abnormally skewed.
 ### **Assessment of Missingness**
 
 ### **Hypothesis Testing**
