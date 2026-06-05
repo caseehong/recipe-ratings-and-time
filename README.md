@@ -28,6 +28,16 @@ I decided to add two new columns that I felt were important to my question: 'avg
 
 
 I also made sure to handle extreme values. Some recipes had unrealistic preparation time. I removed these outliers in order to ensure that my data would not be abnormally skewed.
+
+#### **Univariate Analysis**
+
+<iframe
+  src="assets/rating_fig.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
 ### **Assessment of Missingness**
 
 ### **Hypothesis Testing**
