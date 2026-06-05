@@ -75,7 +75,7 @@ Cooking time was grouped into intervals in order to examine more closely which t
 
 ### **Assessment of Missingness**
 #### **NMAR Analysis**
-The rating, and in turn, avg_rating columns of my DataFrame have missing data in the form of 0s. This was discovered by seeing inconsistencies in written reviews that complimented the recipe and an attached 0 star rating. Upon further inspection, it was also discovered that food.com, the website in which the data comes from, does not allow 0 star ratings and that 1 star was the lowest rating possible. I thought it could be possible that those missing ratings were a result of the recipes being newer and thus having insufficient data which is why I think the avg_rating column is NMAR.
+The rating and, in turn, avg_rating columns of my DataFrame have missing data in the form of 0s. This was discovered by seeing inconsistencies in written reviews that complimented the recipe and an attached 0 star rating. Upon further inspection, it was also discovered that food.com, the website in which the data comes from, does not allow 0 star ratings and that 1 star was the lowest rating possible. I thought it could be possible that those missing ratings were a result of the recipes being newer and thus having insufficient data which is why I think the avg_rating column is NMAR (Not Missing At Random).
 #### **Missingness Dependency**
 A permutation test was ran where the null hypothesis is that there is no relationship between the missingness of avg_rating and submission date (date_num column created) and the alternative hypothesis is that there is a relationship between avg_rating and submission date. This resulted in a p-value of about 0.0009 which is less than 0.05, allowing us to reject the null and assume the missingness of avg_rating has to do with the recipe's submission date.
 
@@ -88,9 +88,13 @@ This plot shows that the distribution of dates features a large chunk of later, 
 ></iframe>
 
 ### **Hypothesis Testing**
+Null hypothesis: There is no relation between the cooking time of a recipe and its average ratings.
+Alternative hypothesis: The cooking time of a recipe influences its average ratings.
+Test statistic: MSE (Mean Squared Error)
+p-value: 0.0009
 
 ### **Framing a Prediction Problem**
-
+Predicting avg_rating -- regression
 ### **Baseline Model**
 
 ### **Final Model**
