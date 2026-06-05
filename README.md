@@ -26,17 +26,19 @@ I decided to add two new columns that I felt were important to my question: 'avg
 - 'avg_rating' features each recipe's average rating. This column was created by grouping the merged recipes dataframe by 'id' and finding the mean of the grouped ratings before mapping the results onto the recipes dataframe 'id' column. This additional column is important in discovering general user consensus about each recipe.
 - 'n_tags' displays the number of tags each recipe has. This was created using the .apply function and finding the length of the list of tags in the 'tags' column. This additional column lets us examine whether or not the number of tags on a recipe play a role in user ratings.
 
+Another thing I did was drop duplicates of the id column. The merged DataFrame had duplicate recipes because of the different user interactions for each recipe. This resulted in repeated unchanging values and statistics that could skew the data.
 
 I also made sure to handle extreme values. Some recipes had unrealistic preparation time. I removed these outliers in order to ensure that my data would not be abnormally skewed.
 
-Below is the head of my cleaned DataFrame:
+Below is the head of my cleaned DataFrame with key features shown:
 
-<iframe
-    src="assets/recipes.html"
-    width="100%"
-    height="400"
-    frameborder="0">
-</iframe>
+| id | minutes | n_steps | avg_rating | calories | n_tags |
+| --- | ------ | ------- | ---------- | -------- | ------ |
+|333281 | 40 | 10 | 4.0	| 138.4	| 219 |
+| 453467 |	45	|	12	|	5.0	| 595.1	| 157 |
+| 306168 |	40	|	6	|	5.0	| 194.8	| 148 |
+| 286009	|	7	|	5.0 |	878.3 |	290 |
+|	475785 |	90	|	17	|	5.0	| 267.0	| 150 |
 
 #### **Univariate Analysis**
 
