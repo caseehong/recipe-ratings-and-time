@@ -29,6 +29,15 @@ I decided to add two new columns that I felt were important to my question: 'avg
 
 I also made sure to handle extreme values. Some recipes had unrealistic preparation time. I removed these outliers in order to ensure that my data would not be abnormally skewed.
 
+Below is the head of my cleaned DataFrame:
+
+<iframe
+    src="assets/recipes.html"
+    width="100%"
+    height="400"
+    frameborder="0">
+</iframe>
+
 #### **Univariate Analysis**
 
 <iframe
