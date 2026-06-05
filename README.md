@@ -14,6 +14,8 @@ This dataset contains CSV files RAW_recipes.csv and interactions.csv -- these fi
 - **nutrition**: Nutrition information in the form of a string that looks like [calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV)]; PDV stands for “percentage of daily value”
 - **n_steps**: Number of steps in the recipe
 - **rating**: Rating given by an individual user
+
+
 ### **Data Cleaning and Exploratory Data Analysis**
 #### **Data Cleaning**
 The two given CSV files were merged on the 'recipe_id' column in order to create one recipes dataframe. With that, there were a large number of columns and cleaning that had to be done within some of those columns. 
