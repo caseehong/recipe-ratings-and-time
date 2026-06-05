@@ -101,10 +101,26 @@ I chose this pair of hypotheses to help me answer my central question: What is t
 
 ### **Framing a Prediction Problem**
 #### **Problem Identification**
-I wanted to predict a recipe's average rating. This is a regression type problem. I chose to predict this column because I feel like it provides valuable information as the response variable. By using key information provided by a recipe such as cooking time, number of steps, number of tags, and number of calories, we can predict how users will respond to the recipe before they even rate it or before the recipe gains sufficient enough feedback to create an accurate average rating. This can be used to push recipes that users are likely to rate highly or even help recipe developers find and develop recipes that more people will enjoy.
+I wanted to predict a recipe's average rating. This is a regression type problem. I chose to predict this column because I feel like it provides valuable information as the response variable. By using key information provided by a recipe such as cooking time, number of steps, number of tags, and number of calories, we can predict how users will respond to the recipe before they even rate it or before the recipe gains sufficient enough feedback to create an accurate average rating. This can be used to push recipes that users are likely to rate highly or even help recipe developers find and develop recipes that more people will enjoy. I chose to use MSE (Mean Squared Error) as my evaluation metric because it closely measures and penalizes larger errors which makes it a good metric to measure the differences between predicted and actual values.
 
 ### **Baseline Model**
+My baseline model uses four quantitative features:
+- **'minutes'**: The cooking time of the recipe in minutes. This measures how long a recipe takes.
+- **'n_steps'**: The number of steps in the recipe. This can measure recipe complexity and simplicity.
+- **'n_tags'**: The number of tags attached to the recipe. This can determine a recipe's reach and popularity through categorization.
+- **'calories'**: An important nutritional value that people tend to look at.
+
+These values are all available at prediction time and may relate to a recipe's ratings. Since all of these features are numeric, there was no need for categorical encoding. I trained a linear regression model using an sklearn Pipeline and evaluated performance on a held-out test set. The mean squared error of this model is about 0.5654 -- this model has decent performance, but it has room for improvement. I believe this model is a good foundation because of its substantial performance, but it has a lot of room for improvement through things like feature engineering and fine-tuning.
 
 ### **Final Model**
+In order to improve my final model, I made a few changes:
+#### **Feature Engineering**
+I engineered two new features:
+- **'minutes_per_step'**: This measures on average how complex the steps in a recipe are. A 60 minute recipe with 42 steps is very different from a 60 minute recipe with 5 steps.
+- **'calories_per_step'**: This measures the average amount of calories gained per step in a recipe. This can tell us a recipe's richness or density relative to its complexity.
+
+I believe these new features improve my model's performance because they measure nuances that cannot be gathered through the non-engineered data. These two features help us make more accurate assumptions about a recipe's complexity which is likely to impact its ratings.
+#### **Switching Models**
+I decided to switch my model to RandomForestRegressor due to its ability to capture nonlinear relationships. This better fits my data and improves my model's accuracy.
 
 ### **Fairness Analysis**
