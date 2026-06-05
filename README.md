@@ -87,14 +87,22 @@ This plot shows that the distribution of dates features a large chunk of later, 
   frameborder="0"
 ></iframe>
 
+In order to not skew statistics and data, I replaced the 0 values in avg_rating with the overall mean of avg_rating. I tested the missingness of avg_rating against other columns in the DataFrame and found that most columns do have some influence in the missingness of average ratings. Alternatively, the description column which also had missing values, is *not* NMAR, and is instead MCAR which was revealed to me when I tested its missingness against the column 'calories' and got a p-value of about 0.3106. To remedy this type of missingness, I simply filled the NaN values with "No description" to resolve the columnn of null values while keeping values strings.
+
 ### **Hypothesis Testing**
-Null hypothesis: There is no relation between the cooking time of a recipe and its average ratings.
-Alternative hypothesis: The cooking time of a recipe influences its average ratings.
-Test statistic: MSE (Mean Squared Error)
-p-value: 0.0009
+A separate permutation test was ran to see if there is truly a relationship between the cooking time of a recipe and its average ratings. 
+- **Null hypothesis**: There is no relationship between the cooking time of a recipe and its average ratings.
+- **Alternative hypothesis**: The cooking time of a recipe influences its average ratings.
+- **Test statistic**: Correlation coefficient
+- **Significance level**: 0.05
+- **Resulting p-value**: 0.0009
+
+I chose this pair of hypotheses to help me answer my central question: What is the realtionship between the cooking time and average rating of recipes? I decided to use correlation coefficient as my test statistic because 'minutes' is a quantitative column and avg_rating is a column that we can treat as quantitative. Because I both columns can be treated as quantitative and I'm trying to uncover a possible relationship between the two, correlation coefficient is a good test statistic. I chose to use the typical significance level of 0.05 as to not make my hypothesis too strict, but also ensure some level of accuracy. The resulting p-value was 0.0009 which is less than my test statistic, signifying that I can reject my null hypothesis and assume that there is a relationship between the cooking time of a recipe and its average rating.
 
 ### **Framing a Prediction Problem**
-Predicting avg_rating -- regression
+#### **Problem Identification**
+I wanted to predict a recipe's average rating. This is a regression type problem. I chose to predict this column because I feel like it provides valuable information as the response variable. By using key information provided by a recipe such as cooking time, number of steps, number of tags, and number of calories, we can predict how users will respond to the recipe before they even rate it or before the recipe gains sufficient enough feedback to create an accurate average rating. This can be used to push recipes that users are likely to rate highly or even help recipe developers find and develop recipes that more people will enjoy.
+
 ### **Baseline Model**
 
 ### **Final Model**
