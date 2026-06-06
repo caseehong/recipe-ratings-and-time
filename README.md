@@ -87,7 +87,7 @@ This plot shows that the distribution of dates features a large chunk of later, 
   frameborder="0"
 ></iframe>
 
-In order to not skew statistics and data, I replaced the 0 values in avg_rating with the overall mean of avg_rating. I tested the missingness of avg_rating against other columns in the DataFrame and found that most columns do have some influence in the missingness of average ratings. Alternatively, the description column which also had missing values, is *not* NMAR, and is instead MCAR which was revealed to me when I tested its missingness against the column 'calories' and got a p-value of about 0.3106. To remedy this type of missingness, I simply filled the NaN values with "No description" to resolve the columnn of null values while keeping values strings.
+In order to not skew statistics and data, I replaced the 0 values in avg_rating with the overall mean of avg_rating. I tested the missingness of avg_rating against other columns in the DataFrame and found that most columns do have some influence in the missingness of average ratings. Alternatively, the description column which also had missing values, is *not* NMAR, and is instead MCAR which was revealed to me when I tested its missingness against the column 'calories' and got a p-value of about 0.2477. To remedy this type of missingness, I simply filled the NaN values with "No description" to resolve the columnn of null values while keeping values strings.
 
 ### **Hypothesis Testing**
 A separate permutation test was ran to see if there is truly a relationship between the cooking time of a recipe and its average ratings. 
